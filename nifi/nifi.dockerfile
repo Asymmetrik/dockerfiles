@@ -111,7 +111,7 @@ RUN echo "#!/bin/sh\n" > $NIFI_HOME/bin/nifi-env.sh
 # Patch for https://issues.apache.org/jira/browse/NIFI-6961 to allow PutEmail and ExtractEmailHeaders to work with Java 11
 # by replacing the javax.activation-api-1.2.0.jar file with the javax.activation-1.2.0.jar file from MVN Central
 ARG JAVAX_ACTIVATION_JAR_PATH=https://repo1.maven.org/maven2/com/sun/activation/javax.activation/1.2.0/javax.activation-1.2.0.jar
-RUN wget -O - ${JAVAX_ACTIVATION_JAR_PATH} > ${NIFI_HOME}/lib/java11/javax.activation-api-1.2.0.jar 
+RUN curl -fSL ${JAVAX_ACTIVATION_JAR_PATH} -o ${NIFI_HOME}/lib/java11/javax.activation-api-1.2.0.jar 
 
 # Web HTTP(s) & Socket Site-to-Site Ports
 EXPOSE 8080 8443 10000 8000
