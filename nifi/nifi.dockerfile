@@ -62,13 +62,14 @@ ENV NIFI_LOG_DIR=${NIFI_HOME}/logs
 COPY --from=scripts ${NIFI_DOCKER_SCRIPTS} ${NIFI_BASE_DIR}/scripts/
 RUN chmod -R +x ${NIFI_BASE_DIR}/scripts/*.sh
 
-
 # Setup NiFi user and create necessary directories
 RUN groupadd -g ${GID} nifi || groupmod -n nifi `getent group ${GID} | cut -d: -f1` \
     && useradd --shell /bin/bash -u ${UID} -g ${GID} -m nifi \
     && mkdir -p ${NIFI_BASE_DIR} \
-    && chown -R nifi:nifi ${NIFI_BASE_DIR} \
-    && apt-get update \
+    && chown -R nifi:nifi ${NIFI_BASE_DIR}
+
+# Image system updates and dependencies.
+RUN apt-get update \
     && apt-get install -y jq xmlstarlet procps curl unzip \
     && rm -rf /var/lib/apt/lists/*
 
