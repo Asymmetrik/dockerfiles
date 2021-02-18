@@ -1,6 +1,7 @@
 FROM ubuntu:bionic
 
 ARG MONGO_VERSION=4.4.3
+ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -y && \
     apt-get install ca-certificates curl gnupg -y

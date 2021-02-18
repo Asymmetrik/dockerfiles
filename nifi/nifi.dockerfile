@@ -29,6 +29,7 @@ ARG NIFI_VERSION=1.11.4
 FROM ubuntu:bionic AS scripts
 
 ARG NIFI_VERSION
+ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
     && apt-get install git -y \
