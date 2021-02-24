@@ -1,4 +1,4 @@
-FROM node:12-buster-slim
+FROM node:14-buster-slim
 
 # Chromium v79.0.3945.88 => 706915
 ENV REVISION=706915
