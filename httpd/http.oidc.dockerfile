@@ -1,6 +1,5 @@
-FROM centos:centos7
+FROM httpd:2.4
 
-RUN yum update -y && yum install -y httpd mod_ssl mod_auth_openidc
-
-# launch apache
-CMD exec /usr/sbin/httpd -D FOREGROUND
+RUN apt-get update -y && \
+    apt-get install libapache2-mod-auth-openidc libcjose0 -y && \
+    rm -rf /var/lib/apt/lists/*
