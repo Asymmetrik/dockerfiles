@@ -6,8 +6,9 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -y && \
     apt-get install ca-certificates curl gnupg -y
 
-RUN curl -sL https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add - && \
-    echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse" > /etc/apt/sources.list.d/mongodb-org-4.4.list && \
+RUN MONGO_MAJOR_MINOR_VERSION=`echo $MONGO_VERSION | cut -d '.' -f 1,2` && \
+    curl -sL https://www.mongodb.org/static/pgp/server-${MONGO_MAJOR_MINOR_VERSION}.asc | apt-key add - && \
+    echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/${MONGO_MAJOR_MINOR_VERSION} multiverse" > /etc/apt/sources.list.d/mongodb-org-${MONGO_MAJOR_MINOR_VERSION}.list && \
     apt-get update -y
 
 RUN apt-get install mongodb-org-server=${MONGO_VERSION} git gcc g++ make -y && \
