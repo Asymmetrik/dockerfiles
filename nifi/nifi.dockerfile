@@ -39,7 +39,7 @@ RUN apt-get update \
 RUN git clone --depth=1 https://github.com/apache/nifi.git --branch=rel/nifi-${NIFI_VERSION} --single-branch
 
 
-FROM adoptopenjdk:11-openj9-bionic
+FROM adoptopenjdk:11.0.11_9-jre-openj9-0.26.0
 LABEL maintainer="Adam Stadler<astadler@asymmetrik.com>"
 
 ARG NIFI_VERSION
