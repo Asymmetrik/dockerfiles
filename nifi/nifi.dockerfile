@@ -1,7 +1,7 @@
 # This file was originally the docker file distributed by the Apache Software Foundation.
 # It has been altered from the original to provide:
 #   Java 11 on the OpenJ9 JVM in ubuntu bionic.
-#   The latest version of nifi (1.11.4)
+#   The latest version of nifi (1.15.1)
 #   Pull in the nifi-docker scripts as a build step.
 #
 # The original file license from the ASF is provided, below:
@@ -24,7 +24,7 @@
 # under the License.
 #
 
-ARG NIFI_VERSION=1.11.4
+ARG NIFI_VERSION=1.15.1
 
 FROM ubuntu:bionic AS scripts
 
