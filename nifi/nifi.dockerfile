@@ -24,7 +24,7 @@
 # under the License.
 #
 
-ARG NIFI_VERSION=1.15.1
+ARG NIFI_VERSION=1.15.2
 
 FROM ubuntu:bionic AS scripts
 
